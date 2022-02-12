@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Game from './components/Game';
+import { Region, Settings } from './components/GameConfig';
+
+const defaultSettings: Settings = {
+  regions: [Region.Oceania],
+  timeLimit: 10,
+}
 
 function App() {
+  // We want a textbox with a empty map and you guess
+  // 
+  const [settings, setSettings] = useState(defaultSettings);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello
+      {/* Render the game config on load. Once submitted, render the game with the settings set */}
+      
+      <Game config={settings}  />
     </div>
   );
 }
